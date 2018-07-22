@@ -1,0 +1,38 @@
+
+ <div class="example-container">
+  <form    class="example-container" [formGroup]="CicloForm"  (ngSubmit)="onSubmit()">
+                             
+      <mat-form-field>
+                  
+         <input   matInput     type="text"  style="display:none;" formControlName="IdCicloEscolar" name="IdCicloEscolar"   [(ngModel)]="DataService.selectedData.IdCicloEscolar" >
+       </mat-form-field>
+      <!--  <mat-form-field>
+          <input  matInput type="number" formControlName="IdCicloEscolar" name="IdCicloEscolar" id="IdCicloEscolar" [(ngModel)]="DataService.selectedData.IdCicloEscolar" placeholder="IdCicloEscolar" minlength="1"  maxlength="2" required>
+      </mat-form-field>    -->
+       <!-- <mat-form-field>
+         <input  matInput type="text" formControlName="Pass" name="Pass2" id="ApellidoMaterno21" [(ngModel)]="DataService.selectedData.ApellidoMaterno" placeholder="Apellido paterno" minlength="4"  maxlength="40" required>
+     </mat-form-field>   -->
+        <mat-form-field>
+            <input  matInput type="number" formControlName="Semestre" name="Semestre" id="Semestre" [(ngModel)]="DataService.selectedData.Semestre" placeholder="Semestre" minlength="1"  maxlength="2" required>
+        </mat-form-field>   
+
+        <mat-form-field>
+         <input  matInput type="date" formControlName="FechaInicio" name="FechaInicio" id="FechaInicio" [(ngModel)]="DataService.selectedData.FechaInicio" placeholder="Fecha Inicio"  required>
+         </mat-form-field>  
+
+         <mat-form-field>
+                <input  matInput type="date" formControlName="FechaCierre" name="FechaCierre" id="FechaCierre" [(ngModel)]="DataService.selectedData.FechaCierre" placeholder="Fecha Cierre"  required>
+                </mat-form-field>   
+
+
+         <button mat-raised-button color="primary"type="submit" [disabled]="!CicloForm.valid" >
+           <i class="fas fa-plus-circle"></i>Guardar
+         </button>
+
+            <button mat-raised-button color="warn" type="reset" (click)="resetForm(CicloForm)">
+              <i class="fas fa-sync-alt"></i> Reiniciar Formulario
+          </button>
+
+ </form>
+
+</div>             

@@ -1,0 +1,45 @@
+
+ <div class="example-container">
+     <form    class="example-container" [formGroup]="UsuarioForm"  (ngSubmit)="onSubmit()">
+                                
+         <!-- <mat-form-field>
+                     
+            <input   matInput   style="display:none;"  type="text"  formControlName="$key" name="$key"   [(ngModel)]="DataService.selectedData.$key">
+          </mat-form-field> -->
+          <!-- <mat-form-field>
+            <input  matInput type="text" formControlName="Pass" name="Pass2" id="ApellidoMaterno21" [(ngModel)]="DataService.selectedData.ApellidoMaterno" placeholder="Apellido paterno" minlength="4"  maxlength="40" required>
+        </mat-form-field>   -->
+           <mat-form-field>
+               <input  matInput type="text" formControlName="Nombre" name="Nombre" id="Nombre" [(ngModel)]="DataService.selectedData.Nombre" placeholder="Nombre(s)" minlength="5"  maxlength="30" required>
+           </mat-form-field>   
+
+           <mat-form-field>
+            <input  matInput type="text" formControlName="ApellidoPat" name="ApellidoPat" id="ApellidoPat" [(ngModel)]="DataService.selectedData.ApellidoPat" placeholder="Apellido paterno" minlength="4"  maxlength="40" required>
+            </mat-form-field>  
+
+            <mat-form-field>
+              <input  matInput type="text" formControlName="ApellidoMaterno" name="ApellidoMaterno" id="ApellidoMaterno" [(ngModel)]="DataService.selectedData.ApellidoMaterno" placeholder="Apellido Materno" minlength="4"  maxlength="40" required>
+            </mat-form-field>  
+
+            <mat-form-field>
+                <input  matInput type="text" formControlName="NomUser" name="NomUser" id="NomUser" [(ngModel)]="DataService.selectedData.NomUser" placeholder="Nombre de usuario" minlength="4"  maxlength="40" required>
+            </mat-form-field>   
+
+           
+
+            <mat-form-field>
+                <input  matInput type="password" formControlName="Pass" name="Pass" id="Pass" [(ngModel)]="DataService.selectedData.Pass" placeholder="Contraseña" minlength="6"  maxlength="8" required>
+            </mat-form-field> 
+            <mat-form-field>
+                <input  matInput type="email" formControlName="Correo" name="Correo" id="Correo" [(ngModel)]="DataService.selectedData.Correo" placeholder="Correo" minlength="4"  maxlength="40" required>
+            </mat-form-field> 
+
+            <button mat-raised-button color="primary"type="submit">
+              <i class="fas fa-plus-circle"></i>Guardar
+            </button>
+
+               <button mat-raised-button color="warn" type="reset" (click)="resetForm(UsuarioForm)">
+                 <i class="fas fa-sync-alt"></i> Reiniciar Formulario
+             </button>
+    </form>
+</div>             
