@@ -1,0 +1,131 @@
+<!--
+  Generated template for the AgCicloEscolarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="text-align: center">{{Pciclo.TipoOperacion}} Ciclo Escolar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="Ciclo">
+    <ion-list>
+
+      <div class="row">
+        <ion-col>
+          <ion-item>
+            <label style="color:rgb(7, 105, 197)">Ciclo Escolar:</label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-datetime displayFormat="YYYY" placeholder="2014" min="2010" required max="2050-12-31" [(ngModel)]="Pciclo.CicloEscolar.CicloEscolarA1"
+              formControlName="CicloEscolarA1"></ion-datetime>
+            <ion-icon item-end name="calendar"></ion-icon>
+            <!-- <ion-input type="text" style="width: 3px" (input)="ValidarNumero($event)" maxlength="4" minlength="4"
+              placeholder="2014" [(ngModel)]="Pciclo.CicloEscolar.CicloEscolarA1" formControlName="CicloEscolarA1"></ion-input> -->
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-datetime displayFormat="YYYY" [min]="Pciclo.CicloEscolar.CicloEscolarA1" required placeholder="2018"
+              max="2050-12-31" [(ngModel)]="Pciclo.CicloEscolar.CicloEscolarA2" formControlName="CicloEscolarA2"
+              [disabled]=" !Pciclo.CicloEscolar.CicloEscolarA1.length>0"></ion-datetime>
+            <ion-icon item-end name="calendar"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-icon *ngIf="Pciclo.CicloEscolar.CicloEscolarA2==Pciclo.CicloEscolar.CicloEscolarA1  " item-end style="color:rgb(228, 19, 19)" name="close-circle"></ion-icon>
+        <ion-icon *ngIf="(Ciclo.controls.CicloEscolarA1.invalid || Ciclo.controls.CicloEscolarA2.invalid) && Pciclo.CicloEscolar.CicloEscolarA2==Pciclo.CicloEscolar.CicloEscolarA1  " item-end style="color:rgb(228, 19, 19)" name="close-circle"></ion-icon>
+        <ion-icon *ngIf="Ciclo.controls.CicloEscolarA1.valid || Ciclo.controls.CicloEscolarA2.valid" item-end style="color:green"
+            name="checkmark-circle"></ion-icon>
+      </div>
+      <ion-card *ngIf="Ciclo.controls.CicloEscolarA1.invalid || Ciclo.controls.CicloEscolarA2.invalid || Pciclo.CicloEscolar.CicloEscolarA2==Pciclo.CicloEscolar.CicloEscolarA1 ">
+        <ion-card-content style="background: red;color: papayawhip">
+          Solo numeros...(Las fechas no pueden ser igual)
+        </ion-card-content>
+      </ion-card>
+
+      <!-- <ion-item>
+          <ion-label fixed   color="primary">Registrar nuevo Ciclo Escolar</ion-label>
+          <ion-input type="text" (input)="ValidarNumero($event)" placeholder="Ingresa el ciclo escolar" [(ngModel)]="Pciclo.CicloEscolar.CicloEscolar" formControlName="CicloEscolar"></ion-input>
+          <ion-icon *ngIf="Ciclo.controls.CicloEscolar.invalid && Pciclo.CicloEscolar.CicloEscolar.length > 0 " item-end style="color:rgb(228, 19, 19)"  name="close-circle"></ion-icon>
+          <ion-icon *ngIf="Ciclo.controls.CicloEscolar.valid && Pciclo.CicloEscolar.CicloEscolar.length > 0 " item-end style="color:green"  name="checkmark-circle"></ion-icon>
+        </ion-item>  -->
+
+      <ion-item>
+        <ion-label color="primary" fixed>Semestres</ion-label>
+        <ion-input type="text" [(ngModel)]="Pciclo.CicloEscolar.Semestre" maxlength="2" minlength="1" (input)="ValidarNumero($event)"
+          placeholder="Ingresa el numero de semestres que tendra el ciclo" name="Semestre" required formControlName="Semestre"></ion-input>
+
+        <ion-icon *ngIf="Ciclo.controls.Semestre.invalid" item-end style="color:rgb(228, 19, 19)" name="close-circle"></ion-icon>
+        <ion-icon *ngIf="Ciclo.controls.Semestre.valid && Pciclo.CicloEscolar.Semestre.length > 0 " item-end style="color:green"
+          name="checkmark-circle"></ion-icon>
+      </ion-item>
+
+      <ion-card *ngIf="Ciclo.controls.Semestre.invalid && Pciclo.CicloEscolar.Semestre.length > 0 ">
+        <ion-card-content style="background: red;color: papayawhip">
+          Solo se aceptan numeros
+        </ion-card-content>
+      </ion-card>
+      <ion-item>
+        <ion-label color="primary">Fecha Inicio</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" min="2010" max="2050-12-31" placeholder="2014" [(ngModel)]="Pciclo.CicloEscolar.FechaInicio"
+          formControlName="FechaInicio"></ion-datetime>
+        <ion-icon item-end name="calendar"></ion-icon>
+        <ion-icon *ngIf="Ciclo.controls.FechaInicio.valid" item-end style="color:green" name="checkmark-circle"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary">Fecha Cierre </ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [min]="Pciclo.CicloEscolar.FechaInicio" [disabled]=" !Pciclo.CicloEscolar.FechaInicio.length>0" max="2050-12-31" placeholder="2018" [(ngModel)]="Pciclo.CicloEscolar.FechaCierre"
+          formControlName="FechaCierre">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-datetime>
+        <ion-icon item-end name="calendar"></ion-icon>
+        <ion-icon *ngIf=" Pciclo.CicloEscolar.FechaInicio!='' && (Ciclo.controls.FechaCierre.invalid || Pciclo.CicloEscolar.FechaInicio==Pciclo.CicloEscolar.FechaCierre) "
+          item-end style="color:rgb(228, 19, 19)" name="close-circle"></ion-icon>
+        <ion-icon *ngIf="Ciclo.controls.FechaCierre.valid && Pciclo.CicloEscolar.FechaInicio!=Pciclo.CicloEscolar.FechaCierre"
+          item-end style="color:green" name="checkmark-circle"></ion-icon>
+      </ion-item>
+      <ion-card *ngIf="Ciclo.controls.FechaCierre.invalid || Pciclo.CicloEscolar.FechaInicio==Pciclo.CicloEscolar.FechaCierre  ">
+        <ion-card-content style="background: red;color: papayawhip">
+          Las fechas no pueden ser igual
+        </ion-card-content>
+      </ion-card>
+      <!--   <ion-item>
+          <ion-label>Fecha de Terminacion</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY"  formControlName="FechaCierre"></ion-datetime>
+        </ion-item> -->
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <button ion-button (click)="cancelar();" full style="background: brown">
+              <ion-icon name="md-close"></ion-icon>Cancelar
+            </button>
+          </ion-col>
+
+          <ion-col>
+          <button ion-button full style=" background:rgb(8, 67, 177)" *ngIf="Ciclo.valid && (Pciclo.CicloEscolar.CicloEscolarA1 != Pciclo.CicloEscolar.CicloEscolarA2) && (Pciclo.CicloEscolar.FechaInicio!=Pciclo.CicloEscolar.FechaCierre )" (click)="guardar();" [disabled]="!Ciclo.valid && !(Pciclo.CicloEscolar.CicloEscolarA1 != Pciclo.CicloEscolar.CicloEscolarA2)  ">
+              <ion-icon name="add-circle"></ion-icon>Guardar
+            </button>
+          </ion-col>
+
+
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+  </form>
+
+</ion-content>

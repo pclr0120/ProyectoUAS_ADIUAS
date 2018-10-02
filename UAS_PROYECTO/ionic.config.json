@@ -1,0 +1,7 @@
+{
+  "name": "AdiUas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
