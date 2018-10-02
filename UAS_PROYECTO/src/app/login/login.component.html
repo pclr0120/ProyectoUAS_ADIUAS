@@ -1,0 +1,43 @@
+
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            
+            <img src="assets/images/domin.png" width="150px" class="user-avatar" />
+            <h1>Bienvenido</h1>
+            <form  [formGroup]="LoginForm">
+                
+                  <!--   <div class="form-group">
+                        <input type="email" ng-model="User" required  formControlName="User"  class="form-control input-underline input-lg" id="User" placeholder="Email">
+                    </div> -->
+                    <div>
+                        <mat-form-field >
+                            <input  matInput type="number"formControlName="User" name="User"  id="emailAddress" placeholder="Ingrese el usuario"   minlength="4"  maxlength="40" required
+                            >
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <input matInput    type="password"  formControlName="Pass"  name="pass" minlength="6" maxlength="10" required     placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+                        </mat-form-field>
+                
+                    </div>
+                    <div>
+                            <label>Mostrar contraseña  <mat-icon matSuffix (click)="hide = !hide"> <i class="far fa-eye"></i> </mat-icon></label>
+                    </div>
+                
+                    <div *ngIf="!LoginForm.valid">
+                            <button class="btn rounded-btn" [disabled]="!LoginForm.valid" type="button" [routerLink]="['/dashboard']"  (click)="LoginIn()"> Entrar </button>
+                            <a class="btn rounded-btn" [routerLink]="['/signup']" >Registrate</a>
+                    </div>
+                    <div *ngIf="LoginForm.valid">
+                            <button class="btn rounded-btn"  style="  border: 2px solid rgba(32, 11, 224, 0.8);" [disabled]="!LoginForm.valid" type="button" [routerLink]="['/dashboard']"  (click)="LoginIn()"> Entrar </button>
+                            <a class="btn rounded-btn" [routerLink]="['/signup']" >Registrate</a>
+                    </div>
+                
+         
+            </form>
+        </div>
+    </div>
+</div>
