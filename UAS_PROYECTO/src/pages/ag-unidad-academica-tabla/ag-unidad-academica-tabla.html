@@ -1,0 +1,169 @@
+<!--
+  Generated template for the AgUnidadAcademicaTablaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ag-UnidadAcademica-tabla</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- Encabezados -->
+  <ion-card>
+    <ion-card-header>
+
+      <button ion-button round style="background:rgb(8, 67, 177)" item-end (click)=" ShowRegistro();">
+        <ion-icon name="add-circle"></ion-icon>Nuevo Registro
+      </button>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+      <ion-item>
+        <ion-label style="color:rgb(6, 6, 7);">Registros a mostrar</ion-label>
+        <ion-select [(ngModel)]="mostrar">
+          <ion-option value="-5">5</ion-option>
+          <ion-option value="-10">10</ion-option>
+          <ion-option value="-20">20</ion-option>
+          <ion-option value="-40">40</ion-option>
+          <ion-option value="-50">50</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+  <ion-grid>
+    <ion-row style="border-style: solid; color:aliceblue; background:rgb(8, 67, 177);   border-color: rgb(12, 12, 12);font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;border-radius: 10px">
+
+      <ion-col class="col">
+        <div style=" text-align: center;">Clave</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Nombre Unidad Academica</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Nivel Educativo</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Unidad Regional</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Telefono</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Director</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Secretario Academico</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Direccion</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Red Social</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Nommbre RT</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Telefono RT</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Correo RT</div>
+      </ion-col>
+
+      <ion-col class="col">
+        <div style="text-align: center">Controles</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- fin encabezado -->
+  <!-- cuerpo de la tabla -->
+  <ion-grid *ngIf="UnidadTablaFiltro.length>0">
+    <ion-row style="border-style:1px; background: rgb(255, 255, 255); color:rgb(0, 0, 0);    border-color: rgb(12, 12, 12);text-align: center;border-radius: 10px"
+      *ngFor="let c of UnidadTablaFiltro | slice: mostrar;let i=index">
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.IDUnidad_Acad}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(3, 3, 3); text-align: center">
+        {{c.Nombre_UA}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(7, 7, 8);text-align: center">
+        {{c.Nivel_Educ}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Unidad_Reg}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Tel_UA}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Nom_Direct}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Nom_SA}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Direcc_SA}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Red_Soc}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Nom_RT}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Tel_RT}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        {{c.Correo_RT}}
+      </ion-col>
+
+      <ion-col style="border-style:solid;border-color:rgb(0, 0, 0);text-align: center">
+        <ion-col>
+          <button ion-button (click)="ShowUpdate(c.IdCicloEscolar)" style="background: rgb(52, 165, 42)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="Eliminar(c.IdCicloEscolar)" style="background:  brown">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <h2 style="text-align: center;color:rgb(255, 6, 6)" *ngIf="PUnidad.TablaUnidad.length<1"> No hay registros</h2>
+  </ion-grid>
+</ion-content>
