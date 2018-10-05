@@ -12,7 +12,7 @@ import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/
   and Angular DI.
 */
 
-export interface UA{
+export interface UA {
   IDUnidad_Acad: String;
   Nombre_UA: String;
   Nivel_Educ: String;
@@ -29,7 +29,7 @@ export interface UA{
 
 @Injectable()
 export class AgUnidadAcademicaProvider {
-  
+
   public UnidadAcademica: UnidadAcademica;
   public Rutas: RutasApi;
   public TablaUnidad: UnidadAcademica[] = [];
@@ -37,7 +37,7 @@ export class AgUnidadAcademicaProvider {
   private config: ConfiguracionSistema;
 
   //Construimos la ruta para las consultas
-  public UrlBase:String = "";
+  public UrlBase: String = "";
 
   contador: number = 0;
 
@@ -46,17 +46,17 @@ export class AgUnidadAcademicaProvider {
     public http: HttpClient,
     public loadingCtrl: LoadingController
   ) {
-    
+
     this.UnidadAcademica = new UnidadAcademica();
     this.Rutas = new RutasApi();
-    this.UrlBase = this.Rutas.root+this.Rutas.UnidadAcademica;
+    this.UrlBase = this.Rutas.root + this.Rutas.UnidadAcademica;
     this.get();
 
     console.log('Hello AgUnidadAcademicaProvider Provider');
   }
 
-  
-  public Insert(){
+
+  public Insert() {
     let loading = this.loadingCtrl.create({
       content: 'Guardando Datos...'
     });
@@ -64,12 +64,12 @@ export class AgUnidadAcademicaProvider {
     loading.present();
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.UrlBase+this.Rutas.insert, this.UnidadAcademica)
+      this.http.post(this.UrlBase + this.Rutas.insert, this.UnidadAcademica)
         .subscribe(res => {
-         
+
           this.get();
           this.events.publish('ActualizarTablaUnidadAcademica'); //cuando inserta el dato mando actualizar a ejecutar get en la pagina tabla  para que actualize los datos;
-          
+
           setTimeout(() => {
             this.Clear();
             loading.dismiss();
@@ -86,18 +86,18 @@ export class AgUnidadAcademicaProvider {
     });
   }
 
-  public get(){
-      let loading = this.loadingCtrl.create({
-        content:"Obteniendo Registros..."
-      });
+  public get() {
+    let loading = this.loadingCtrl.create({
+      content: "Obteniendo Registros..."
+    });
 
-      loading.present();
+    loading.present();
 
-      return new Promise((resolve,reject)=>{
-        this.http.get(this.UrlBase+this.Rutas.search)
-        .subscribe((res:any) => {
-          this.TablaUnidad=[];
-          
+    return new Promise((resolve, reject) => {
+      this.http.get(this.UrlBase + this.Rutas.search)
+        .subscribe((res: any) => {
+          this.TablaUnidad = [];
+
           let data = res.data;
           for (const key in data) {
             if (data.hasOwnProperty(key)) {
@@ -105,7 +105,7 @@ export class AgUnidadAcademicaProvider {
               this.TablaUnidad.push(element);
             }
           }
-         
+
           this.events.publish('ActualizarTablaUnidadAcademica'); //cuando inserta el dato mando actualizar a ejecutar get en la pagina tabla  para que actualize los datos;
           setTimeout(() => {
             loading.dismiss();
@@ -120,49 +120,50 @@ export class AgUnidadAcademicaProvider {
           }, 5000);
           reject(err);
         });
-      });
+    });
 
   }
 
   public Operacion() {
-    
+
     if (this.TipoOperacion.trim() == 'Registrar')
       this.Insert();
     if (this.TipoOperacion.trim() == 'Actualizar') {
-     this.update();
-   }
- }
+      this.update();
+    }
+  }
 
- public update() {
+  public update() {
 
-  let loading = this.loadingCtrl.create({
-    content: 'Actualizando Datos...'
-  });
+    let loading = this.loadingCtrl.create({
+      content: 'Actualizando Datos...'
+    });
 
-  loading.present();
+    loading.present();
 
-  return new Promise((resolve, reject) => {
-    //alert(JSON.stringify(this.CicloEscolar))
-    this.http.put(this.UrlBase+this.Rutas.update, this.UnidadAcademica)
-      .subscribe(res => {
-       // alert(JSON.stringify(res))
-        this.get();
-        this.events.publish('ActualizarTablaUnidadAcademica'); //cuando inserta el dato mando actualizar a ejecutar get en la pagina tabla  para que actualize los datos;
-        setTimeout(() => {
-          this.Clear();
-          loading.dismiss();
-        }, 1000);
-        resolve(res);
-      }, (err) => {
-        alert("Error:Verfique su conexion a internet" + JSON.stringify(err))
+    return new Promise((resolve, reject) => {
+      //alert(JSON.stringify(this.CicloEscolar))
+      console.log(this.UnidadAcademica);
+    this.http.put(this.UrlBase + this.Rutas.update+'/'+this.UnidadAcademica.IDUnidad_Acad, this.UnidadAcademica)
+        .subscribe(res => {
+          // alert(JSON.stringify(res))
+          this.get();
+          this.events.publish('ActualizarTablaUnidadAcademica'); //cuando inserta el dato mando actualizar a ejecutar get en la pagina tabla  para que actualize los datos;
+          setTimeout(() => {
+            this.Clear();
+            loading.dismiss();
+          }, 1000);
+          resolve(res);
+        }, (err) => {
+          alert("Error:Verfique su conexion a internet" + JSON.stringify(err))
 
-        setTimeout(() => {
-          loading.dismiss();
-        }, 5000);
-        reject(err);
-      });
-  });
-}
+          setTimeout(() => {
+            loading.dismiss();
+          }, 5000);
+          reject(err);
+        });
+    });
+  }
 
   public Clear() {
 
@@ -179,9 +180,9 @@ export class AgUnidadAcademicaProvider {
 
     return new Promise((resolve, reject) => {
       //alert(JSON.stringify(this.CicloEscolar))
-      this.http.delete(this.UrlBase+this.Rutas.delete+'/'+this.UnidadAcademica.IDUnidad_Acad)
+      this.http.delete(this.UrlBase + this.Rutas.delete + '/' + this.UnidadAcademica.IDUnidad_Acad)
         .subscribe(res => {
-         // alert(JSON.stringify(res))
+          // alert(JSON.stringify(res))
           this.get();
           this.events.publish('ActualizarTablaUnidadAcademica'); //cuando inserta el dato mando actualizar a ejecutar get en la pagina tabla  para que actualize los datos;
           setTimeout(() => {

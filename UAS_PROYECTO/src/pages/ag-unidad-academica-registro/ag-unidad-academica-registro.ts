@@ -35,7 +35,7 @@ export class AgUnidadAcademicaRegistroPage {
       Tel_UA: [''],
       Nom_Direct: [''],
       Nom_SA: [''],
-      Direcc_SA: [''],
+      Direcc_UA: [''],
       Red_Soc: [''],
       Nom_RT: [''],
       Tel_RT: [''],

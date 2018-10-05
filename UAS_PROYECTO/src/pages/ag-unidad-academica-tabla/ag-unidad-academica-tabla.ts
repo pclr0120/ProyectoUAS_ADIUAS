@@ -92,7 +92,7 @@ export class AgUnidadAcademicaTablaPage {
     this.PUnidad.UnidadAcademica = d[0]; /// lo manda 
     this.PUnidad.TipoOperacion = "Actualizar"
 
-    let addModal = this.modalCtrl.create('AgCicloEscolarRegistroPage');//esto es el modal que sale de regisrar o actualizar
+    let addModal = this.modalCtrl.create('AgUnidadAcademicaRegistroPage');//esto es el modal que sale de regisrar o actualizar
     addModal.onDidDismiss(item => {
       if (item) {
         //this.items.add(item);
@@ -115,7 +115,7 @@ export class AgUnidadAcademicaTablaPage {
           }
         },
         {
-          text: 'Elimar',
+          text: 'Eliminar',
           handler: () => {
 
             const val: string = id.toString();
