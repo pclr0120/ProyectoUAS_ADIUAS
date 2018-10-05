@@ -15,6 +15,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //import {AgCicloEscolarRegistroPage}from'../pages/ag-ciclo-escolar-registro/ag-ciclo-escolar-registro';
 //privders de Ag
 import { AgCicloEscolarProvider } from '../providers/ag-ciclo-escolar/ag-ciclo-escolar';
+import { AgUnidadAcademicaProvider } from '../providers/ag-unidad-academica/ag-unidad-academica';
+import { AgUnidadAcademicaTablaPage } from '../pages/ag-unidad-academica-tabla/ag-unidad-academica-tabla';
 
 
 //fin Ag
@@ -29,6 +31,10 @@ import { AgCicloEscolarProvider } from '../providers/ag-ciclo-escolar/ag-ciclo-e
     //AgCicloEscolarPage,
     AgCicloEscolarTablaPage,
     //AgCicloEscolarRegistroPage
+
+    //AgUnidadAcademica
+    AgUnidadAcademicaTablaPage
+
 
     //fin ag
   ],
@@ -47,14 +53,19 @@ import { AgCicloEscolarProvider } from '../providers/ag-ciclo-escolar/ag-ciclo-e
     //  AgCicloEscolarPage,
       AgCicloEscolarTablaPage,
       //AgCicloEscolarRegistroPage
-  
+    
+      //AgUnidadAcademicaTablaPage
+      AgUnidadAcademicaTablaPage
+
+      
       //fin ag
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AgCicloEscolarProvider
+    AgCicloEscolarProvider,
+    AgUnidadAcademicaProvider
   ]
 })
 export class AppModule {}

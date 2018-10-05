@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Nav } from 'ionic-angular';
 
 import { AgCicloEscolarTablaPage } from '../ag-ciclo-escolar-tabla/ag-ciclo-escolar-tabla';
-
+import { AgUnidadAcademicaTablaPage } from '../ag-unidad-academica-tabla/ag-unidad-academica-tabla';
 /**
  * Generated class for the AgSubMenuPage page.
  *
@@ -22,7 +22,7 @@ export class AgSubMenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.pages = [
       { title: 'Ciclo Escolar', component: AgCicloEscolarTablaPage },
-      { title: 'Unidad Académicas', component: AgSubMenuPage },
+      { title: 'Unidad Académicas', component: AgUnidadAcademicaTablaPage },
       { title: 'Programas Educativos', component: AgSubMenuPage },
       { title: 'Usuarios del Sistema', component: AgSubMenuPage },
       { title: 'Discapacidad o Condición NEE', component: AgSubMenuPage },
